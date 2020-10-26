@@ -15,6 +15,12 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Montserrat',
         primarySwatch: Colors.orange,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        bottomSheetTheme: BottomSheetThemeData(
+            shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(20),
+          ),
+        )),
       ),
       home: ScreenRouter(),
     );

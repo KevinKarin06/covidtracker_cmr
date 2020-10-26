@@ -24,10 +24,9 @@ class _ScreenRouterState extends State<ScreenRouter> {
         MaterialPageRoute(builder: (context) => HomeScreen()),
       );
     } else {
-      prefs.setBool('seen', true);
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => IntroScreen()),
+        MaterialPageRoute(builder: (context) => IntroScreen(prefs: prefs)),
       );
     }
   }
