@@ -1,4 +1,3 @@
-import 'package:covid19_tracker_cmr/screens/intro_screen.dart';
 import 'package:covid19_tracker_cmr/screens/router.dart';
 import 'package:flutter/material.dart';
 
@@ -16,11 +15,12 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.orange,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         bottomSheetTheme: BottomSheetThemeData(
-            shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            top: Radius.circular(20),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(20),
+            ),
           ),
-        )),
+        ),
       ),
       home: ScreenRouter(),
     );

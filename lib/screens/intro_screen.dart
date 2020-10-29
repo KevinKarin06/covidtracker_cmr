@@ -15,6 +15,7 @@ class IntroScreen extends StatelessWidget {
             'assets/images/intro_image.jpg',
             fit: BoxFit.cover,
             height: double.infinity,
+            width: double.infinity,
           ),
         ),
       ),
@@ -36,7 +37,7 @@ class IntroScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Stay Home, Stay Safe, Save LIVES',
+              'Stay Home, Stay Safe, Save Lives',
               style: introMainText,
             ),
             Text(
@@ -48,7 +49,7 @@ class IntroScreen extends StatelessWidget {
               children: [
                 Text(
                   'GET STARTED',
-                  style: introBtnext,
+                  style: introBtnText,
                 ),
                 SizedBox(
                   width: 15,
@@ -57,8 +58,9 @@ class IntroScreen extends StatelessWidget {
                   height: 35,
                   width: 35,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      color: Colors.red),
+                    borderRadius: BorderRadius.circular(50),
+                    color: red,
+                  ),
                   child: IconButton(
                     icon: Icon(
                       Icons.arrow_forward_sharp,

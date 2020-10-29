@@ -11,22 +11,22 @@ class ScreenRouter extends StatefulWidget {
 }
 
 class _ScreenRouterState extends State<ScreenRouter> {
-  /* 
-   use the shared preference package to check if it is 
-   first launch 
-   */
-  Future checkFirstSeen() async {
+  Future<void> checkFirstSeen() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool _seen = (prefs.getBool('seen') ?? false);
     if (_seen) {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => HomeScreen()),
+        MaterialPageRoute(
+          builder: (context) => HomeScreen(),
+        ),
       );
     } else {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => IntroScreen(prefs: prefs)),
+        MaterialPageRoute(
+          builder: (context) => IntroScreen(prefs: prefs),
+        ),
       );
     }
   }
@@ -34,9 +34,10 @@ class _ScreenRouterState extends State<ScreenRouter> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(milliseconds: 200), () {
-      checkFirstSeen();
-    });
+    // Timer(Duration(milliseconds: 200), () {
+    //   checkFirstSeen();
+    // });
+    checkFirstSeen();
   }
 
   @override
@@ -46,9 +47,9 @@ class _ScreenRouterState extends State<ScreenRouter> {
         child: Container(
           height: 100,
           width: 100,
-          child: CircularProgressIndicator(
-            strokeWidth: 2.0,
-          ),
+          // child: CircularProgressIndicator(
+          //   strokeWidth: 2.0,
+          // ),
         ),
       ),
     );
