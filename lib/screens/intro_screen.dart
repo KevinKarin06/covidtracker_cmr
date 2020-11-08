@@ -1,5 +1,5 @@
 import 'package:covid19_tracker_cmr/screens/home_screen.dart';
-import 'package:covid19_tracker_cmr/utils/Constants.dart';
+import 'package:covid19_tracker_cmr/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

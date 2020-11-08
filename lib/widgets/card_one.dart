@@ -1,4 +1,4 @@
-import 'package:covid19_tracker_cmr/utils/Constants.dart';
+import 'package:covid19_tracker_cmr/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class CardOne extends StatelessWidget {
@@ -8,8 +8,9 @@ class CardOne extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double _height = MediaQuery.of(context).size.height * 0.20;
     return Container(
-      height: 120,
+      height: _height,
       decoration: BoxDecoration(
         color: blueBackground,
         borderRadius: BorderRadius.circular(20),
@@ -19,8 +20,8 @@ class CardOne extends StatelessWidget {
         children: [
           Positioned(
             right: 10,
-            top: 5,
             child: Container(
+              height: _height,
               padding: EdgeInsets.all(10),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,

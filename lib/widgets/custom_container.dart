@@ -15,10 +15,12 @@ class MyContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double _height = MediaQuery.of(context).size.height * 0.20;
+    double _width = MediaQuery.of(context).size.width * 0.40;
     return Container(
       padding: EdgeInsets.all(15.0),
-      height: 110,
-      width: 150,
+      height: _height,
+      width: _width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: this.backgrounColor,

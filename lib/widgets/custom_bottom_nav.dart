@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/rendering.dart';
 
 const Color PRIMARY_COLOR = Colors.blueAccent;
 const Color BACKGROUND_COLOR = Color(0xffE2E7F2);
@@ -43,7 +45,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: widget.children.map((item) {
           var color = item.color ?? widget.itemColor;
-          var icon = item.icon;
+          var iconPath = item.iconPath;
           var label = item.label;
           int index = widget.children.indexOf(item);
           return GestureDetector(
@@ -68,12 +70,13 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  Icon(
-                    icon,
-                    size: 20,
+                  SvgPicture.asset(
+                    iconPath,
                     color: widget.currentIndex == index
                         ? color
                         : color.withOpacity(0.5),
+                    height: 20,
+                    width: 20,
                   ),
                   widget.currentIndex == index
                       ? Expanded(
@@ -100,10 +103,10 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
 }
 
 class CustomBottomNavigationItem {
-  final IconData icon;
+  final String iconPath;
   final String label;
   final Color color;
 
   CustomBottomNavigationItem(
-      {@required this.icon, @required this.label, this.color});
+      {@required this.iconPath, @required this.label, this.color});
 }

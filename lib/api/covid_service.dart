@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math';
 
 import 'package:covid19_tracker_cmr/model/covid19.dart';
 import 'package:http/http.dart' as http;
@@ -10,7 +11,6 @@ class CovidService {
   String fileName = 'CachedData.json';
 
   Future<void> _deleteCachedContent() async {
-    String fileName = 'CachedData.json';
     var cacheDir = await getTemporaryDirectory();
     if (await File(cacheDir.path + '/' + fileName).exists()) {
       cacheDir.delete(recursive: true);
@@ -19,7 +19,6 @@ class CovidService {
   }
 
   Future<Covid19> _loadFromApi() async {
-    String fileName = 'CachedData.json';
     var response = await http.get(_url);
     var parsed = jsonDecode(response.body);
     parsed.cast<Map<String, dynamic>>();
@@ -27,15 +26,16 @@ class CovidService {
     print(parsed[latestIndex]);
     print('laded from api');
     var tempDir = await getTemporaryDirectory();
-    File file = File(tempDir.path + '/' + fileName);
+    File file = new File(tempDir.path + '/' + fileName);
     file.writeAsString(response.body, flush: true, mode: FileMode.write);
     return Covid19.fromJson(parsed[latestIndex]);
   }
 
   Future<Covid19> getData({bool refresh = false}) async {
+    Future<Covid19> covid19;
     if (refresh) {
       _deleteCachedContent();
-      _loadFromApi();
+      covid19 = _loadFromApi();
     } else {
       var cacheDir = await getTemporaryDirectory();
       if (await File(cacheDir.path + '/' + fileName).exists()) {
@@ -46,8 +46,15 @@ class CovidService {
         print('loaded from file');
         return Covid19.fromJson(parsed[latestIndex]);
       } else {
-        _loadFromApi();
+        covid19 = _loadFromApi();
       }
     }
+    return covid19;
+  }
+
+  Future<int> getDat() async {
+    var ran = Random().nextInt(1000);
+    print('This is $ran');
+    return ran;
   }
 }
